@@ -1,0 +1,31 @@
+﻿@model BankCreditSystem.Domain.Entities.Client
+
+@{
+    ViewData["Title"] = "Детали клиента";
+}
+
+<h2>Детали клиента</h2>
+
+<dl class="row">
+    <dt class="col-sm-3">ClientId</dt>
+    <dd class="col-sm-9">@Model.ClientId</dd>
+
+    <dt class="col-sm-3">Фамилия</dt>
+    <dd class="col-sm-9">@Model.LastName</dd>
+
+    <dt class="col-sm-3">Имя</dt>
+    <dd class="col-sm-9">@Model.FirstName</dd>
+
+    <dt class="col-sm-3">Отчество</dt>
+    <dd class="col-sm-9">@Model.MiddleName</dd>
+
+    <dt class="col-sm-3">Паспорт</dt>
+    <dd class="col-sm-9">@Model.PassportData</dd>
+
+    <dt class="col-sm-3">Доход</dt>
+    <dd class="col-sm-9">@Model.Income</dd>
+
+    <dt class="col-sm-3">Кредитная история</dt>
+    <dd class="col-sm-9">@Model.CreditHistory</dd>
+</dl>
+<a class="btn btn-secondary" href="@Url.Action("Index")">Вернуться к списку</a>

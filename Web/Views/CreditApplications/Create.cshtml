@@ -1,0 +1,45 @@
+﻿@model BankCreditSystem.Domain.Entities.CreditApplication
+
+@{
+    ViewData["Title"] = "Новая заявка на кредит";
+}
+
+<h2>Подать новую заявку</h2>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label asp-for="ClientId"></label>
+        <input asp-for="ClientId" class="form-control" placeholder="Введите ID клиента" />
+        <span asp-validation-for="ClientId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Amount"></label>
+        <input asp-for="Amount" class="form-control" type="number" step="0.01" placeholder="Введите сумму кредита" />
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TermMonths"></label>
+        <input asp-for="TermMonths" class="form-control" type="number" placeholder="Введите срок кредита (в месяцах)" />
+        <span asp-validation-for="TermMonths" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Purpose"></label>
+        <input asp-for="Purpose" class="form-control" placeholder="Введите цель кредита" />
+        <span asp-validation-for="Purpose" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Подать заявку</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

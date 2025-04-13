@@ -1,0 +1,42 @@
+﻿@model IEnumerable<BankCreditSystem.Domain.Entities.Client>
+
+@{
+    ViewData["Title"] = "Список клиентов";
+}
+
+<h2>Клиенты</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ClientId</th>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Паспорт</th>
+            <th>Доход</th>
+            <th>Кредитная история</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var client in Model)
+        {
+            <tr>
+                <td>@client.ClientId</td>
+                <td>@client.LastName</td>
+                <td>@client.FirstName</td>
+                <td>@client.MiddleName</td>
+                <td>@client.PassportData</td>
+                <td>@client.Income</td>
+                <td>@client.CreditHistory</td>
+                <td>
+                    <a class="btn btn-info btn-sm" href="@Url.Action("Details", new { id = client.ClientId })">Детали</a>
+                    <a class="btn btn-warning btn-sm" href="@Url.Action("Edit", new { id = client.ClientId })">Редактировать</a>
+                    <a class="btn btn-danger btn-sm" href="@Url.Action("Delete", new { id = client.ClientId })">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-primary" href="@Url.Action("Create")">Добавить клиента</a>

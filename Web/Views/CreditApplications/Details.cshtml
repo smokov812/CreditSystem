@@ -1,0 +1,32 @@
+﻿@model BankCreditSystem.Domain.Entities.CreditApplication
+
+@{
+    ViewData["Title"] = "Детали заявки";
+}
+
+<h2>Детали заявки</h2>
+
+<dl class="row">
+    <dt class="col-sm-3">№ заявки</dt>
+    <dd class="col-sm-9">@Model.CreditApplicationId</dd>
+
+    <dt class="col-sm-3">Клиент</dt>
+    <dd class="col-sm-9">@Model.Client?.LastName @Model.Client?.FirstName</dd>
+
+    <dt class="col-sm-3">Сумма</dt>
+    <dd class="col-sm-9">@Model.Amount</dd>
+
+    <dt class="col-sm-3">Срок (мес.)</dt>
+    <dd class="col-sm-9">@Model.TermMonths</dd>
+
+    <dt class="col-sm-3">Цель</dt>
+    <dd class="col-sm-9">@Model.Purpose</dd>
+
+    <dt class="col-sm-3">Статус</dt>
+    <dd class="col-sm-9">@Model.Status</dd>
+
+    <dt class="col-sm-3">Дата подачи</dt>
+    <dd class="col-sm-9">@Model.ApplicationDate.ToString("dd.MM.yyyy")</dd>
+</dl>
+
+<a class="btn btn-secondary" href="@Url.Action("Index")">Вернуться к списку</a>

@@ -1,0 +1,52 @@
+﻿@model BankCreditSystem.Domain.Entities.Client
+
+@{
+    ViewData["Title"] = "Редактирование клиента";
+}
+
+<h2>Редактировать клиента</h2>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="ClientId" />
+    <div class="form-group">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MiddleName"></label>
+        <input asp-for="MiddleName" class="form-control" />
+        <span asp-validation-for="MiddleName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PassportData"></label>
+        <input asp-for="PassportData" class="form-control" />
+        <span asp-validation-for="PassportData" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Income"></label>
+        <input asp-for="Income" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="Income" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CreditHistory"></label>
+        <input asp-for="CreditHistory" class="form-control" />
+        <span asp-validation-for="CreditHistory" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+    <a class="btn btn-secondary" href="@Url.Action("Index")">Отмена</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
